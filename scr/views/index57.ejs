@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carros disponibles</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Carros disponibles</h1>
+    <a href="/create" class="btn">Agregar nuevo carro</a>
+    <ul>
+      <% carros.forEach(carro => { %>
+        <li>
+          <strong>ID:</strong> <%= carro.id %> - 
+          <strong>Marca:</strong> <%= carro.marca %> 
+          <a href="/show/<%= carro.id %>" class="link">Ver</a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>

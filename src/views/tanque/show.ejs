@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro detallado | Tanque de agua</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">🏡 Inicio</a>
+      <a href="/tanque">📊 Registros</a>
+      <a href="/tanque/create">🧪 Nuevo ingreso</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>🔎 Información del registro</h1>
+
+    <div class="container-center">
+      <section class="contenedor data-card">
+        <% if (tanque) { %>
+          <ul class="registro-detalle">
+            <li><span>ID:</span> <%= tanque.ID_TANQUE %></li>
+            <li><span>Nivel:</span> <%= tanque.nivel %> cm</li>
+            <li><span>Tiempo:</span> <%= tanque.tiempo %> segundos</li>
+            <li><span>Litros:</span> <%= tanque.litros %> L</li>
+            <li><span>Fecha:</span>
+              <% if (tanque.Fecha_Datos) { %>
+                <%= new Date(tanque.Fecha_Datos).toLocaleString('es-GT') %>
+              <% } else { %>
+                —
+              <% } %>
+            </li>
+          </ul>
+
+          <div class="acciones">
+            <a href="/tanque/<%= tanque.ID_TANQUE %>/edit" class="btn btn-edit">🛠️ Modificar</a>
+            <a href="/tanque" class="btn btn-back">🔙 Regresar</a>
+          </div>
+        <% } else { %>
+          <p class="error-msg">❌ Registro no encontrado.</p>
+          <a href="/tanque" class="btn btn-back">🔙 Volver</a>
+        <% } %>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

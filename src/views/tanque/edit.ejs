@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar datos del tanque</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">🏡 Inicio</a>
+      <a href="/tanque">📈 Ver registros</a>
+    </nav>
+  </header>
+
+  <h1>🛠️ Editar datos del tanque</h1>
+
+  <% if (tanque) { %>
+    <div class="container-center">
+      <section class="contenedor form-panel">
+        <form action="/tanque/<%= tanque.ID_TANQUE %>?_method=PUT" method="POST">
+          
+          <label for="nivel">Nivel alcanzado (cm)</label>
+          <input type="number" id="nivel" name="nivel" value="<%= tanque.nivel %>" required>
+
+          <label for="tiempo">Tiempo de llenado (segundos)</label>
+          <input type="text" id="tiempo" name="tiempo" value="<%= tanque.tiempo %>" required>
+
+          <label for="litros">Litros utilizados</label>
+          <input type="number" id="litros" name="litros" value="<%= tanque.litros %>" required>
+
+          <button type="submit">Actualizar datos</button>
+        </form>
+      </section>
+
+      <div style="margin-top:12px;">
+        <a href="/tanque">⬅️ Volver a la lista</a>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="container-center">
+      <p style="color:red;">No se encontró el registro.</p>
+      <a href="/tanque">⬅️ Volver a la lista</a>
+    </div>
+  <% } %>
+
+</body>
+</html>

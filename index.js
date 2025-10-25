@@ -1,19 +1,24 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+
 const app = express();
-const habitacionRouter = require('./scr/routes/habitacion57.router');
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'scr/views'));
-
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Mostrar directamente el sistema de carros en "/"
-app.use('/', habitacionRouter);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'src', 'views'));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
+const mainRouter = require('./src/routes/main.routes')
+app.use('/', mainRouter);
+
+
+app.use('/tanque', require('./src/routes/tanque.routes'))               
+
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`http://localhost:${port}`));

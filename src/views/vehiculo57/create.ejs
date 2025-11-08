@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingresar datos del tanque</title>
+  <title>Ingresar datos del vehículo</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <nav>
       <a href="/">🏡 Inicio</a>
-      <a href="/tanque">📈 Ver registros</a>
+      <a href="/vehiculo57">🚗 Ver vehículos</a>
     </nav>
   </header>
 
@@ -18,22 +18,22 @@
     <p style="color: rgb(0, 255, 255); font-weight: bold;"><%= mensaje %></p>
   <% } %>
 
-  <h1>💧 Ingresar datos del tanque</h1>
+  <h1>🚗 Ingresar datos del vehículo</h1>
 
   <div class="container-center">
     <section class="contenedor form-panel">
-      <form action="/tanque" method="POST">
-        <label>Nivel alcanzado (cm)</label>
-        <input type="number" name="nivel" required>
+      <form action="/vehiculo57" method="POST">
+        <label>Marca del vehículo</label>
+        <input type="text" name="marca" required>
 
-        <label>Tiempo de llenado (segundos)</label>
-        <input type="text" name="tiempo" required>
+        <label>Modelo</label>
+        <input type="text" name="modelo" required>
 
-        <label>Litros utilizados</label>
-        <input type="number" name="litros" required>
+        <label>Precio (Q)</label>
+        <input type="number" name="precio" required>
 
-        <label>Fecha (opcional)</label>
-        <input type="datetime-local" name="fecha">
+        <label>Cantidad disponible</label>
+        <input type="number" name="cantidad" required>
 
         <button type="submit">Guardar</button>
       </form>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registros de vehículos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">🏡 Inicio</a> 
+      <a href="/vehiculo57/create">📝 Ingresar nuevo vehículo</a>
+      <a href="/vehiculo57">📈 Ver vehículos</a>
+    </nav>
+  </header>
+
+  <h1>📊 Registros de vehículos</h1>
+
+  <% if (Array.isArray(vehiculos) && vehiculos.length > 0) { %>
+    <div class="container-center">
+      <section class="contenedor table-panel">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Precio (Q)</th>
+              <th>Cantidad</th>
+              <th colspan="3">Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vehiculos.forEach(function(v) { %>
+              <tr>
+                <td><%= v.id_vehiculo %></td>
+                <td><%= v.marca %></td>
+                <td><%= v.modelo %></td>
+                <td><%= v.precio %></td>
+                <td><%= v.cantidad %></td>
+                <td><a href="/vehiculo57/<%= v.id_vehiculo %>">🔍 Ver</a></td>
+                <td><a href="/vehiculo57/<%= v.id_vehiculo %>/edit">✏️ Editar</a></td>
+                <td>
+                  <form action="/vehiculo57/<%= v.id_vehiculo %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('¿Seguro que desea eliminar este vehículo?')">🗑️ Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  <% } else { %>
+    <div class="container-center">
+      <p>No hay vehículos registrados aún. <a href="/vehiculo57/create">Crea el primero</a>.</p>
+    </div>
+  <% } %>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro detallado | Vehículo</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">🏡 Inicio</a>
+      <a href="/vehiculo57">📊 Registros</a>
+      <a href="/vehiculo57/create">🧪 Nuevo ingreso</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>🔎 Información del vehículo</h1>
+
+    <div class="container-center">
+      <section class="contenedor data-card">
+        <% if (vehiculo) { %>
+          <ul class="registro-detalle">
+            <li><span>ID:</span> <%= vehiculo.id_vehiculo %></li>
+            <li><span>Marca:</span> <%= vehiculo.marca %></li>
+            <li><span>Modelo:</span> <%= vehiculo.modelo %></li>
+            <li><span>Precio:</span> Q<%= vehiculo.precio %></li>
+            <li><span>Cantidad:</span> <%= vehiculo.cantidad %></li>
+          </ul>
+
+          <div class="acciones">
+            <a href="/vehiculo57/<%= vehiculo.id_vehiculo %>/edit" class="btn btn-edit">🛠️ Modificar</a>
+            <a href="/vehiculo57" class="btn btn-back">🔙 Regresar</a>
+          </div>
+        <% } else { %>
+          <p class="error-msg">❌ Vehículo no encontrado.</p>
+          <a href="/vehiculo57" class="btn btn-back">🔙 Volver</a>
+        <% } %>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

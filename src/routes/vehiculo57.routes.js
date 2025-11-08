@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/tanque.controller');
+const controller = require('../controllers/vehiculo57.controller');
 
 router.get('/create', controller.create);       // Mostrar formulario de ingreso
 router.post('/', controller.store);             // Guardar datos nuevos

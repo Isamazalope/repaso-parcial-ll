@@ -14,11 +14,11 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
-const mainRouter = require('./src/routes/main.routes')
+const mainRouter = require('./src/routes/main.routes');
 app.use('/', mainRouter);
 
-
-app.use('/tanque', require('./src/routes/tanque.routes'))               
+// ✅ Solo rutas de vehiculo57
+app.use('/vehiculo57', require('./src/routes/vehiculo57.routes'));
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`http://localhost:${port}`));

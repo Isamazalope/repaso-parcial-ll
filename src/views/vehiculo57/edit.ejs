@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar datos del vehículo</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">🏡 Inicio</a>
+      <a href="/vehiculo57">🚗 Ver vehículos</a>
+    </nav>
+  </header>
+
+  <h1>🛠️ Editar datos del vehículo</h1>
+
+  <% if (vehiculo) { %>
+    <div class="container-center">
+      <section class="contenedor form-panel">
+        <form action="/vehiculo57/<%= vehiculo.id_vehiculo %>?_method=PUT" method="POST">
+          
+          <label for="marca">Marca del vehículo</label>
+          <input type="text" id="marca" name="marca" value="<%= vehiculo.marca %>" required>
+
+          <label for="modelo">Modelo</label>
+          <input type="text" id="modelo" name="modelo" value="<%= vehiculo.modelo %>" required>
+
+          <label for="precio">Precio (Q)</label>
+          <input type="number" id="precio" name="precio" value="<%= vehiculo.precio %>" required>
+
+          <label for="cantidad">Cantidad disponible</label>
+          <input type="number" id="cantidad" name="cantidad" value="<%= vehiculo.cantidad %>" required>
+
+          <button type="submit">Actualizar datos</button>
+        </form>
+      </section>
+
+      <div style="margin-top:12px;">
+        <a href="/vehiculo57">⬅️ Volver a la lista</a>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="container-center">
+      <p style="color:red;">No se encontró el vehículo.</p>
+      <a href="/vehiculo57">⬅️ Volver a la lista</a>
+    </div>
+  <% } %>
+
+</body>
+</html>
